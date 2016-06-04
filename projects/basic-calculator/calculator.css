@@ -1,0 +1,119 @@
+#calculator {
+	padding: 5% 0;
+}
+.calculator {
+	width: 30%;
+	min-width: 300px;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	border: 5px solid #FFFFFF;
+}
+.calculator:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.calculator button {
+	display: inline-block;
+	font-size: 1.1em;
+  	padding: 1em;
+  	background-color: rgba(255,255,255,0.9);
+  	color: #666666;
+  	cursor: pointer;
+}
+
+.calculator button:focus {
+	outline: none;
+}
+.topOperators li > button {
+	width: 25%;
+	float: left;
+}
+.topOperators li > button:first-child {
+	background-color: #D32F2F;
+	color: #F8F8F8;
+}
+.topOperators li > button:first-child:hover {
+	background-color: #FF1744;
+	color: #FFFFFF;
+}
+.operators button:focus,
+.topOperators li > button:first-child:focus, 
+.topOperators li > button:last-child:focus,
+.rightOperators li > button:last-child:focus {
+	box-shadow: inset 2px 2px rgba(255,255,255,0.9), inset -2px -2px rgba(255,255,255,0.9);
+}
+.topOperators li > button:last-child {
+	background-color: #607D8B;
+}
+.topOperators li > button:last-child:hover {
+	background-color: #78909C;
+}
+.rightOperators {
+	position: relative;
+	float: left;
+	width: 25%;
+}
+.rightOperators li > button {
+	display: block;
+	width: 100%;
+}
+.rightOperators li > button:last-child {
+	position: absolute;
+	top: 50;
+	height: 100%;
+	font-size: 1.1em;
+	background-color: #FFC400;
+}
+.rightOperators li > button:last-child:hover {
+	background-color: #FFD600;
+}
+.calculatorOutput > input {
+	width: 100%;
+	height: 90px;
+	text-align: right;
+	padding: 0.277777778em;
+	font-size: 2.2em;
+	color: rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0.05);
+}
+.calculatorOutput > input:focus {
+	outline: none;
+}
+.operators button {
+	background-color: #1E88E5;
+	color: #FFFFFF;
+}
+.operators button:hover {
+	background-color: #2196F3;
+	color: #F5F5F5;
+}
+.numberButtons {
+	float: left;
+	width: 75%;
+}
+.numberButtons li:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.numberButtons li button {
+	width: 33.333333333%;
+	float: left;
+	line-height: 1.2em;
+}
+.numberButtons button:hover {
+	background-color: rgba(0,0,0,0.1);
+	color: #000000;
+}
+.numberButtons li:last-child > button:last-child {
+	cursor: default;
+}
+.numberButtons li:last-child > button:last-child:hover {
+	background-color: #F5F5F5;
+  	color: #666666;
+}
+.numberButtons button:focus {
+	box-shadow: inset 2px 2px rgba(0,0,0,0.1), inset -2px -2px  rgba(0,0,0,0.1);
+	border-radius: 2px 2px;
+}
