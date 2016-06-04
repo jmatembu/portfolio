@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Search form</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet'>
+	<link rel="stylesheet" href="../../css/themify-icons.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+	<header class="menu">
+		<nav>
+			<ul>
+				<li><a href="../../index.html"><i class="ti-arrow-left"></i> Back to Projects</a></li>
+				<li><a href="index.html">All Forms</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main role="main" class="page">
+		<section class="page-title">
+			<h1>Appointment Scheduling Form</h1>
+			<p>Created from project assignments at Learn. Modern Developer</p>
+		</section>
+		<section class="forms">
+			<div class="container">
+				<div class="appointment-container">
+					<div class="appointment">
+						<div class="appointment-header">
+							<h1>Schedule Appointment</h1>
+						</div>
+						<form class="appointment-form">
+							<div class="col6">
+								<label for="email">Email *</label>
+								<input type="email" name="email" id="email" autofocus>
+							</div>
+							<div class="col6">
+								<label for="phone_number">Phone Number *</label>
+								<input type="text" name="phone_number" id="phone_number">
+							</div>
+							<div class="col12">
+								<label for="message">Message *</label>
+								<textarea name="message" id="message"></textarea>
+							</div>
+							<div class="row">
+								<div class="col4">
+									<label for="schedule-date">Date *</label>
+									<input type="date" name="schedule_date" id="schedule-date">
+								</div>
+								<div class="col4">
+									<label for="schedule-time">Time *</label>
+									<input type="time" name="schedule_time" id="schedule-time">
+								</div>
+								<div class="col4">
+									<label for="schedule-timezone">Timezone *</label>
+									<select>
+										<option>GMT -3</option>
+										<option>GMT</option>
+										<option>GMT +3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col6 right">
+								<button type="submit" class="button button-lg">Complete Schedule</button>
+							</div>	
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<span>Copyright &copy; 2016!</span>
+	</footer>
+</body>
+</html>
