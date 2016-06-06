@@ -250,14 +250,16 @@ ul {
 .person h1,
 .person h2 {
 	color: #FAFAFA;
+	font-family: Oswald, Roboto, sans-serif;
 }
 .person blockquote {
-	margin-top: 25px;
-	font-family: Lato, sans-serif;
-	color: #FAFAFA;
+	margin-top: 1.5625em;
+	font-size: 0.875em;
+	color: #eee;
 }
 .person p span {
 	font-style: italic;
+	font-weight: bold;
 }
 .social {
 	position: absolute;
