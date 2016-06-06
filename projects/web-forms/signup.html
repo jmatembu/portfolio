@@ -17,34 +17,36 @@
 			</ul>
 		</nav>
 	</header>
-	<section class="page-title">
-		<h1>Sign Up Form</h1>
-		<p>Created from project assignments at Learn. Modern Developer</p>
-	</section>
-	<section class="forms">
-		<div class="container">
-			<div class="signup">
-				<div class="signup-header">
-					<h1>Sign Up</h1>
-					<span><a href="login.html">I already have an Account</a></span>
+	<main role="main" class="page">
+		<section class="page-title">
+			<h1>Sign Up Form</h1>
+			<p>Created from project assignments at Learn. Modern Developer</p>
+		</section>
+		<section class="forms">
+			<div class="container">
+				<div class="signup">
+					<div class="signup-header">
+						<h1>Sign Up</h1>
+						<span><a href="login.html">I already have an Account</a></span>
+					</div>
+					<form class="signup-form">
+						<label for="first-name">First Name *</label>
+						<input type="text" name="first_name" id="first-name" autofocus>
+						<label for="last-name">Last Name *</label>
+						<input type="text" name="last_name" id="last-name">
+						<label for="dob">Date of Birth *</label>
+						<input type="date" name="dob" id="dob">
+						<label for="email">Email: *</label>
+						<input type="email" name="email" id="email" placeholder="you@domain.com">
+						<label for="password">Password: *</label>
+						<input type="password" name="password" id="password">
+						<span>* All fields are required</span>
+						<button type="submit" class="button button-lg">Sign Up</button>
+					</form>
 				</div>
-				<form class="signup-form">
-					<label for="first-name">First Name *</label>
-					<input type="text" name="first_name" id="first-name" autofocus>
-					<label for="last-name">Last Name *</label>
-					<input type="text" name="last_name" id="last-name">
-					<label for="dob">Date of Birth *</label>
-					<input type="date" name="dob" id="dob">
-					<label for="email">Email: *</label>
-					<input type="email" name="email" id="email" placeholder="you@domain.com">
-					<label for="password">Password: *</label>
-					<input type="password" name="password" id="password">
-					<span>* All fields are required</span>
-					<button type="submit" class="button button-lg">Sign Up</button>
-				</form>
 			</div>
 		</div>
-	</div>
+	</main>
 	<footer>
 		<span>Copyright &copy; 2016!</span>
 	</footer>
