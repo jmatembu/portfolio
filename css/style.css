@@ -256,10 +256,8 @@ ul {
 	font-family: Lato, sans-serif;
 	color: #FAFAFA;
 }
-.person span {
-	display: block;
-	margin: 10px auto;
-	width: 40%;
+.person p span {
+	font-style: italic;
 }
 .social {
 	position: absolute;
