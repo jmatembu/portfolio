@@ -5,8 +5,6 @@
 	margin: 0;
 	padding: 0;
 }
-textarea,
-select,
 input[type="date"],
 input[type="datetime"],
 input[type="email"],
@@ -21,21 +19,25 @@ input[type="tel"],
 input[type="text"],
 input[type="time"],
 input[type="url"],
-input[type="week"] {
+input[type="week"],
+textarea {
 	box-sizing: border-box;
 	background-clip:padding-box;
 	border-radius:0;
 	border: 0;
 	-webkit-appearance:none;
+	-moz-appearance:none;
 	background-color:#fff;
 	color:#000;
 	outline:0;
-	margin:0;
-	padding:0;
 	text-align: left;
 	font-size:1em;
 	height: 1em;
 	vertical-align: middle;
+}
+select {
+	background-color: transparent;
+	outline: none;
 }
 button {
 	background: none;
@@ -205,9 +207,10 @@ ul {
 	padding: 0 0.625em;
 	line-height: 3;
 	color: #424242;
-	transition: 0.3s
+	transition: 0.3s;
 }
 .menu nav ul li a:hover {
+	color: #FF7043;
 	border-bottom: 5px solid #FF7043;
 }
 .page-title {
@@ -223,15 +226,18 @@ ul {
 	top: 0;
 	left: 0;
 	height: 100%;
-	background: url('../images/me.jpg');
+	background: #FFF3E0 url('../images/me2.jpg') no-repeat;
 }
 .person {
 	position: absolute;
-	top: 40%;
-	left: 25%;
-	width: 50%;
+	top: 25%;
+	left: 5%;
+	width: 40%;
 	margin: 0 auto;
 	text-align: center;
+	background-color: rgba(0,0,0,0.3);
+	padding: 2em 0;
+	border-radius: 5px;
 }
 .person:after {
 	content: "";
@@ -323,7 +329,6 @@ ul {
 	display: inline-block;
 	font-size: 0.875em;
   	padding: 0.5em 1em;
-  	margin: 0.125em ;
   	background-color: #FF7043;
   	color: #fff;
   	border-radius: 0.1875em;
