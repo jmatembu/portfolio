@@ -1,5 +1,7 @@
 /** CARD */
-
+abbr {
+	border-bottom: 1px dotted #9e9e9e;
+}
 .card {
 	width: 30%;
 	margin: 0 auto;
