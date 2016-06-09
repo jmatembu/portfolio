@@ -1,7 +1,11 @@
+html {
+	box-sizing: border-box;
+	font-size: 100%;
+}
 *,
 *:after,
 *:before {
-	box-sizing: border-box;
+	box-sizing: inherit;
 	margin: 0;
 	padding: 0;
 }
@@ -62,41 +66,34 @@ html, body {
 body {
 	position: relative;
 	background-color: #FAFAFA;
-	font-size: 16px;
+	font-size: 1em;
 	font-weight: 300;
-	line-height: 1.2;
+	line-height: 1.4;
 	font-family: "Roboto", sans-serif;
 }
-.page {
-	min-height: 100%;
-	margin-bottom: -2.375em;
-}
-.page:after {
-	content: "";
-	display: block;
-	height: 2.375em;
-}
 h1 {
-	color: #FF7043;
 	font-size: 3em;
-	margin-bottom: 0.75em;
+	margin-bottom: 3.5rem;
 }
 h2 {
-	color: #FF7043;
-	font-size: 2.2em;
-	line-height: 1.2;
-	margin-bottom: 0.625em;
+	font-size: 2em;
+	margin-bottom: 1.75rem;
 }
 h3 {
-	margin-top: 0.75em;
-	margin-bottom: 0.625em;
+	font-size: 1.5em;
+	margin-bottom: 1.75rem;
+}
+h1,
+h2 {
+	color: #FF7043;
 }
 h1,h2,h3,h4,h5,h6 {
 	font-family: "Roboto", sans-serif;
 	font-weight: 300;
 }
 p {
-	margin: 0.625em 0;
+	font-size: 1em;
+	margin-bottom: 1.4rem;
 }
 img {
 	width: 100%;
@@ -174,18 +171,18 @@ ul {
   color: #292929;
 }
 .icon-lg {
-  font-size: 80px;
+  font-size: 5rem;
 }
 .icon-sm {
-  font-size: 32px;
+  font-size: 2rem;
 }
 .icon-xs {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 .container {
-	width: 80%;
+	max-width: 80%;
 	margin: 0 auto;
-	padding: 4% 2%;
+	padding: 3.5rem 2rem;
 }
 .menu {
 	border-top: 3px solid #FF7043;
@@ -212,6 +209,15 @@ ul {
 .menu nav ul li a:hover {
 	color: #FF7043;
 	border-bottom: 5px solid #FF7043;
+}
+.page {
+	min-height: 100%;
+	margin-bottom: -2.375em;
+}
+.page:after {
+	content: "";
+	display: block;
+	height: 2.375em;
 }
 .page-title {
 	text-align: center;
@@ -246,7 +252,7 @@ ul {
 	clear: both;
 }
 .person h1 {
-	font-size: 4em;
+	font-size: 4.5rem;
 }
 .person h1,
 .person h2 {
@@ -256,7 +262,7 @@ ul {
 .person blockquote {
 	margin-top: 1.5625em;
 	font-size: 0.875em;
-	color: #eee;
+	color: #FFFFFF;
 }
 .person p span {
 	font-style: italic;
