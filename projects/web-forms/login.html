@@ -29,12 +29,12 @@
 						<h1>Login</h1>
 						<span><a href="signup.html">Create an Account</a></span>
 					</div>
-					<form class="login-form">
+					<form class="login-form" id="login">
 						<label for="email">Email: *</label>
-						<input type="email" class="text-input" name="email" id="email" autofocus>
+						<input type="email" class="text-input" name="email" id="email" required autofocus>
 						<label for="password">Password: *</label>
 						<span><a href="#">Forgot?</a></span>
-						<input type="password" class="text-input" name="password" id="password">
+						<input type="password" class="text-input" name="password" id="password" required>
 						<button type="submit" class="button button-lg">Login</button>
 					</form>
 				</div>
@@ -44,5 +44,7 @@
 	<footer>
 		<span>Copyright &copy; 2016!</span>
 	</footer>
+	<script type="text/javascript" src="js/validator.js"></script>
+	<script type="text/javascript" src="js/forms.js"></script>
 </body>
 </html>
