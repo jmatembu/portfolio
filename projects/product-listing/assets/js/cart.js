@@ -174,7 +174,6 @@
 			}
 		},
 		cart = {},
-		couponCode = null,
 		toggleShoppingCart = function(element) {
 			var classValue = element.getAttribute('class');
 			if (classValue.indexOf('hidden') >= 0) {
@@ -274,16 +273,16 @@
 		removeProductHTML = function(event) {
 
 			var product, id = extractProductId(event);
+			
+			if (cart.count() === 0) {
+				shoppingCartSection.setAttribute('class', 'hidden');
+			}
 
 			product = store.getItem.call(cart, id);
 			cart.removeItem(product.id);
 			setLabel(totalCartItemLabel, cart.count());
 			setLabel(cartTotalLabel, cart.getTotal()); // Total amount of items in cart
 			event.target.parentElement.parentElement.parentElement.remove();
-			
-			if (cart.count() === 0) {
-				shoppingCartSection.setAttribute('class', 'hidden');
-			}
 
 		},
 		changeProductPrice = function(event) {
@@ -293,10 +292,14 @@
 				product = store.getItem.call(cart, id);
 
 			// Remove product is user changes its quantity to zero.
-			if (quantity > 0) {
-				product.quantity = quantity;
-				setLabel(cartTotalLabel, cart.getTotal()); // Total amount of items in cart
-			} else {
+			
+			product.quantity = quantity;
+			setLabel(cartTotalLabel, cart.getTotal()); // Total amount of items in cart
+			
+			product.quantity = 1;
+
+			if (quantity === 0) {
+				
 				removeProductHTML(event);
 			}
 			
@@ -325,21 +328,21 @@
 	};
 	cart.getTotal = function() {
 
-		var result = 0, code = this.promo, discount;
+		var result = 0, discount;
 
 		if (this.count() > 0) {
 
 			for (var i = this.items.length - 1; i >= 0; i--) {
 				
-				discount = this.items[i].price - (this.items[i].price * code.amount);
+				discount = this.items[i].price - (this.items[i].price * this.promo.amount);
 				
-				if (code.promo !== "" && code.name === "IWANTTHIS" && this.items[i].id === code.product) {
+				if (this.promo !== "" && this.promo.name === "IWANTTHIS" && this.items[i].id === this.promo.product) {
 					
 					result += discount * this.items[i].quantity;
 
-				} else if (code.promo !== "" && code.name === "GETTHEM") {
+				} else if (this.promo !== "" && this.promo.name === "GETTHEM") {
 
-					if (code.products.indexOf(this.items[i].id) >= 0) {
+					if (this.promo.products.indexOf(this.items[i].id) >= 0) {
 
 						result += discount * this.items[i].quantity;
 
@@ -349,7 +352,7 @@
 
 					}
 
-				} else if (code.promo !== "" && code.name === "MEGABLAST") {
+				} else if (this.promo !== "" && this.promo.name === "MEGABLAST") {
 					
 					result += discount * this.items[i].quantity;
 
@@ -363,20 +366,27 @@
 
 			this.promo = "";
 
+		} else {
+			result = 0;
 		}
 
 		return round(result, 2);
 	};
 
 	cart.addToCart = function(event) {
+
 		event.preventDefault();
 
 		var id = "", product = {};
 
 		if (event.target.nodeName === "I") {
+			
 			id = event.target.parentElement.parentElement.parentElement.getAttribute('id');
+		
 		} else if (event.target.nodeName === "A") {
+		
 			id = event.target.parentElement.parentElement.getAttribute('id');
+		
 		}
 
 		product = store.getItem(id);
@@ -391,17 +401,21 @@
 	setLabel(totalCartItemLabel, cart.count());
 
 	toggleElement.addEventListener('click', function(event) {
+		
 		toggleShoppingCart(shoppingCartSection);
+	
 	});
 
 	addCouponElement.addEventListener('click', function(event) {
+	
 		var promoInput = event.target.previousElementSibling.value,
 			promo = store.getPromo(promoInput);
 
 		if (promo) {
-			cart.promo = promo;
 
+			cart.promo = promo;
 			setLabel(cartTotalLabel, cart.getTotal());
+		
 		}
 
 		
