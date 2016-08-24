@@ -3,7 +3,7 @@
 	"use strict";
 
 	var shoppingCartSection = document.getElementById('shoppingCart'),
-		toggleElement = document.getElementById('toggleShoppingCart'),
+		toggleBtn = document.getElementById('toggleShoppingCart'),
 		totalCartItemLabel = document.getElementById('totalCartItemsLabel'),
 		cartSubTotalLabel = document.getElementById('cartSubTotal'),
 		cartShippingLabel = document.getElementById('cartShipping'),
@@ -174,16 +174,30 @@
 			}
 		},
 		cart = {},
-		toggleShoppingCart = function(element) {
-			var classValue = element.getAttribute('class');
-			if (classValue.indexOf('hidden') >= 0) {
-				element.removeAttribute('class');
-				toggleElement.innerText = "Hide Cart";
+		toggleVisibility = function(element) {
+
+			var classes = element.classList;
+
+			if (classes.contains('hidden')) {
+
+				element.classList.remove('hidden');
+				setLabel(toggleBtn, 'Hide Cart');
+
 			} else {
-				element.setAttribute('class', 'hidden');
-				toggleElement.innerText = "Show Cart";
+
+				element.classList.add('hidden');
+				setLabel(toggleBtn, 'View Cart');
+
 			}
 		},
+
+		/**
+		 * Build the HTML structure of the product to be added 
+		 * into the cart and on to the page.
+		 *
+		 * @params Object product
+		 * return DOM Nodes
+		 */
 		buildProductHTML = function(product) {
 			// Create elements
 			var liCartProduct = document.createElement('li'),
@@ -219,7 +233,7 @@
 			inputQuantity.setAttribute('value', '1');
 			inputQuantity.setAttribute('min', '0');
 			inputQuantity.setAttribute('id', 'quantity_' + product.id);
-			inputQuantity.addEventListener('change', changeProductPrice, false);
+			inputQuantity.addEventListener('change', changeItemQuantity, false);
 			liCartProductQuantity.appendChild(inputQuantity);
 
 			// List item with product price
@@ -250,33 +264,57 @@
 
 			return liCartProduct;
 		},
+
+		/**
+		 * Render the HTML of a product into the cart.
+		 *
+		 * @params Object product
+		 */
 		renderCartItemHTML = function(product) {
+			
 			var listOfProductsInCart = document.querySelector('.cartProductList');
 
 			listOfProductsInCart.appendChild(buildProductHTML(product));
+
 		},
+
+		/**
+		 * Extract id embedded in an element's id attribute
+		 *
+		 * @params Event event
+		 * return String id
+		 */
 		extractProductId = function(event) {
+
 			var id;
 
 			// Check is user clicked on icon or what a parent element to the icon
 			// Then get id attribute from element that has been clicked on
 			if (event.target.nodeName === "I") {
+			
 				id = event.target.parentElement.getAttribute('id');
+			
 			} else {
+			
 				id = event.target.getAttribute('id');
+			
 			}
 
 			id = id.substr(id.indexOf('_') + 1);
 
 			return id;
 		},
+
+		/**
+		 * Remove the HTML of the product
+		 *
+		 * @params Event event
+		 */
 		removeProductHTML = function(event) {
 
 			var product, id = extractProductId(event);
 			
-			if (cart.count() === 0) {
-				shoppingCartSection.setAttribute('class', 'hidden');
-			}
+			
 
 			product = store.getItem.call(cart, id);
 			cart.removeItem(product.id);
@@ -284,54 +322,99 @@
 			setLabel(cartTotalLabel, cart.getTotal()); // Total amount of items in cart
 			event.target.parentElement.parentElement.parentElement.remove();
 
+			if (cart.count() === 0) {
+				
+				toggleVisibility(shoppingCartSection);
+			
+			}
+
 		},
-		changeProductPrice = function(event) {
+
+		/**
+		 * Recalculate total amount when the shopper changes the item quantity.
+		 *
+		 * @params Event event
+		 */
+		changeItemQuantity = function(event) {
 
 			var id = event.target.getAttribute('id').substr(9),
-				quantity = event.target.value * 1, // Convert the quantity to a number
+				quantity = event.target.value * 1, // Convert the value to a number
 				product = store.getItem.call(cart, id);
-
-			// Remove product is user changes its quantity to zero.
 			
 			product.quantity = quantity;
 			setLabel(cartTotalLabel, cart.getTotal()); // Total amount of items in cart
 			
-			product.quantity = 1;
-
 			if (quantity === 0) {
-				
+				// Remove product if user reduces quantity to zero.
 				removeProductHTML(event);
+
 			}
 			
 		},
 		
+		/**
+		 * Set the text content of any element
+		 */
 		setLabel = function(element, label) {
-			element.innerText = label;
-		},
-		round = function(value, decimals) {
-		  	return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
-		};
 
-	cart.promo = "";
+			element.innerText = label;
+		
+		},
+
+		/**
+		 * Round off numbers
+		 */
+		round = function(value, decimals) {
+		
+		  	return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+		
+		};
+	// Promo code used by shopper
+	cart.promo = ""; 
+	// Items selected by shopper
 	cart.items = [];
+	
+	/**
+	 * Count the number of items in the cart
+	 *
+	 * return Number
+	 */
 	cart.count = function() {
+	
 		return this.items.length;
+	
 	};
+
+	/**
+	 * Remove an item from cart
+	 *
+	 * params @id String The unique identifier for each item in the cart
+	 */
 	cart.removeItem = function(id) {
 
 		for (var i = this.items.length - 1; i >= 0; i--) {
 			if (this.items[i].id === id) {
+				// I think this is a bit hacky and there must be a better way
+				// Without this, I get wrong total when an item is removed and added back to cart.
+				this.items[i].quantity = 1; // Reset quantity to 1, the initial value 
+				// Remove item from the cart
 				this.items.splice(i, 1);
 			}
 		}
 
 	};
+
+	/**
+	 * Calculate the total order amount taking into consideration
+	 * possibility of shoppers with promo codes
+	 */
 	cart.getTotal = function() {
 
-		var result = 0, discount;
-
+		var result = 0,
+			discount = 0;
+		// Calculate the total if we have one or more items in the cart
 		if (this.count() > 0) {
-
+			// TODO: Refactor this code
 			for (var i = this.items.length - 1; i >= 0; i--) {
 				
 				discount = this.items[i].price - (this.items[i].price * this.promo.amount);
@@ -363,24 +446,31 @@
 				}
 								
 			}
-
+			// Resetting the promo code back to an empty string
+			// allows shopper to use a better coupon
 			this.promo = "";
 
-		} else {
-			result = 0;
 		}
 
+		// Final total order amount rounded off to 2 decimal places
 		return round(result, 2);
 	};
 
+	/**
+	 * Add product to cart
+	 *
+	 * @params Event
+	 */
 	cart.addToCart = function(event) {
 
 		event.preventDefault();
 
 		var id = "", product = {};
 
+		// The shopper might click on the icon or the link itself
+		// either way, we need to get the id
 		if (event.target.nodeName === "I") {
-			
+		
 			id = event.target.parentElement.parentElement.parentElement.getAttribute('id');
 		
 		} else if (event.target.nodeName === "A") {
@@ -389,31 +479,37 @@
 		
 		}
 
+		// Pick the product from the store
 		product = store.getItem(id);
+		// Add the product to the cart object
 		cart.items.push(product);
+		// Render the HTML with product info into the cart
 		renderCartItemHTML(product);
-		setLabel(totalCartItemLabel, cart.count()); // Number of items in cart
-		setLabel(cartTotalLabel, cart.getTotal()); // Total amount of items in cart
+		// Show number or items in the cart
+		setLabel(totalCartItemLabel, cart.count());
+		// Calculate and show the total amount of products in cart
+		setLabel(cartTotalLabel, cart.getTotal()); 
 
 		event.stopPropagation();
 	};
 
-	setLabel(totalCartItemLabel, cart.count());
-
-	toggleElement.addEventListener('click', function(event) {
+	toggleBtn.addEventListener('click', function(event) {
 		
-		toggleShoppingCart(shoppingCartSection);
+		toggleVisibility(shoppingCartSection);
 	
 	});
 
+	toggleVisibility(shoppingCartSection);
+
 	addCouponElement.addEventListener('click', function(event) {
-	
+		
 		var promoInput = event.target.previousElementSibling.value,
 			promo = store.getPromo(promoInput);
 
 		if (promo) {
-
+			// Add the promo code to cart
 			cart.promo = promo;
+			// Calculate the total amount
 			setLabel(cartTotalLabel, cart.getTotal());
 		
 		}
@@ -421,6 +517,11 @@
 		
 	});
 
+	// Listen to those shopper "add-to-cart" clicks
 	storeElement.addEventListener('click', cart.addToCart, false);
+	
+	// The initial number products in cart, which is usually 0.
+	// Could just set the element text to 0. :)
+	setLabel(totalCartItemLabel, cart.count());
 
 })(window);
