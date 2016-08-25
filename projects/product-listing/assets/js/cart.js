@@ -357,7 +357,7 @@
 		 */
 		setLabel = function(element, label) {
 
-			element.innerText = label;
+			element.textContent = label;
 		
 		},
 
@@ -393,13 +393,14 @@
 	cart.removeItem = function(id) {
 
 		for (var i = this.items.length - 1; i >= 0; i--) {
+
 			if (this.items[i].id === id) {
-				// I think this is a bit hacky and there must be a better way
-				// Without this, I get wrong total when an item is removed and added back to cart.
-				this.items[i].quantity = 1; // Reset quantity to 1, the initial value 
+				// Reset quantity to 1, the initial value.
+				this.items[i].quantity = 1; 
 				// Remove item from the cart
-				this.items.splice(i, 1);
+				return this.items.splice(i, 1);
 			}
+
 		}
 
 	};
@@ -447,7 +448,7 @@
 								
 			}
 			// Resetting the promo code back to an empty string
-			// allows shopper to use a better coupon
+			// allows shopper to use a different coupon
 			this.promo = "";
 
 		}
@@ -479,12 +480,22 @@
 		
 		}
 
+		function inCart(value) {
+
+			return value.id !== id;
+
+		}
+
 		// Pick the product from the store
 		product = store.getItem(id);
-		// Add the product to the cart object
-		cart.items.push(product);
-		// Render the HTML with product info into the cart
-		renderCartItemHTML(product);
+
+		if (cart.items.every(inCart)) {
+			// Add the product to the cart object
+			cart.items.push(product);
+			// Render the HTML with product info into the cart
+			renderCartItemHTML(product);
+		}
+		
 		// Show number or items in the cart
 		setLabel(totalCartItemLabel, cart.count());
 		// Calculate and show the total amount of products in cart
