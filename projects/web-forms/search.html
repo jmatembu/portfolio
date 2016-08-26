@@ -28,15 +28,16 @@
 				<div class="search">
 					<h2>Search our Store</h2>
 					<form class="search-form">
-						<input type="search" name="s" id="s" autofocus placeholder="Search here">
+						<span class="error"></span>
+						<input type="search" name="s" id="s" placeholder="Search here">
 						<select>
 							<option>Find in...</option>
-							<option>Laptops</option>
-							<option>Desktops</option>
-							<option>Servers</option>
-							<option>Workstations</option>
-							<option>Printers and Photocopiers</option>
-							<option>Accessories</option>
+							<option value="c1">Laptops</option>
+							<option value="c2">Desktops</option>
+							<option value="c3">Servers</option>
+							<option value="c4">Workstations</option>
+							<option value="c5">Printers and Photocopiers</option>
+							<option value="c6">Accessories</option>
 						</select>
 						<button class="button button-lg" type="submit">Search</button>
 					</form>
@@ -48,5 +49,7 @@
 	<footer>
 		<span>Copyright &copy; 2016!</span>
 	</footer>
+	<script type="text/javascript" src="js/validator.js"></script>
+	<script type="text/javascript" src="js/search.js"></script>
 </body>
 </html>
