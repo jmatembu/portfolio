@@ -600,3 +600,23 @@
 	margin-top: 0.3125em;
 }
 /** Payment Form */
+.error {
+	display: block;
+	width: 100%;
+	padding: 0;
+	background-color: #FF0000;
+	color: #FFFFFF;
+	font-size: 1rem;
+	transition: 0.3s;
+}
+.error.active {
+	padding: 0.625rem;
+	margin-bottom: 0.625rem;
+}
+input[type="text"].invalid,
+input[type="date"].invalid,
+input[type="email"].invalid,
+input[type="password"].invalid,
+input[type="search"].invalid {
+	border: 1px solid #FF0000;
+}
