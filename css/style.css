@@ -72,15 +72,15 @@ body {
 	font-family: "Roboto", sans-serif;
 }
 h1 {
-	font-size: 3em;
-	margin-bottom: 3.5rem;
+	font-size: 3rem;
+	margin-bottom: 2rem;
 }
 h2 {
-	font-size: 2em;
+	font-size: 2rem;
 	margin-bottom: 1.75rem;
 }
 h3 {
-	font-size: 1.5em;
+	font-size: 1.5rem;
 	margin-bottom: 1.75rem;
 }
 h1,
@@ -221,7 +221,7 @@ ul {
 }
 .page-title {
 	text-align: center;
-	padding: 5% 3%;
+	padding: 3rem;
 	background-color: #FFF3E0;
 }
 .page-title p {
