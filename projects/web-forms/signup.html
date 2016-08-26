@@ -29,16 +29,21 @@
 						<h1>Sign Up</h1>
 						<span><a href="login.html">I already have an Account</a></span>
 					</div>
-					<form class="signup-form">
+					<form class="signup-form" novalidate>
 						<label for="first-name">First Name *</label>
-						<input type="text" name="first_name" id="first-name" autofocus>
+						<span class="error"></span>
+						<input type="text" name="first_name" id="first-name">
 						<label for="last-name">Last Name *</label>
+						<span class="error"></span>
 						<input type="text" name="last_name" id="last-name">
 						<label for="dob">Date of Birth *</label>
+						<span class="error"></span>
 						<input type="date" name="dob" id="dob">
 						<label for="email">Email: *</label>
+						<span class="error"></span>
 						<input type="email" name="email" id="email" placeholder="you@domain.com">
 						<label for="password">Password: *</label>
+						<span class="error"></span>
 						<input type="password" name="password" id="password">
 						<span>* All fields are required</span>
 						<button type="submit" class="button button-lg">Sign Up</button>
@@ -50,5 +55,7 @@
 	<footer>
 		<span>Copyright &copy; 2016!</span>
 	</footer>
+	<script type="text/javascript" src="js/validator.js"></script>
+	<script type="text/javascript" src="js/signup.js"></script>
 </body>
 </html>
