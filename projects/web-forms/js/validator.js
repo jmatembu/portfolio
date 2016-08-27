@@ -351,6 +351,7 @@
 		if (arguments.length < 2) {
 			throw "Function requires 2 parameters, " + arguments.length + " given";
 		}
+
 		return this.countWords(input) >= n;
 	};
 
@@ -380,6 +381,26 @@
 		for (i = 0, len = input.length; i < len; i++) {
 			code = input.charCodeAt(i);
 			if(!(code >= 48 && code <= 57) && !(code >= 65 && code <= 90) && !(code >= 97 && code <= 122 )) {
+				return false;
+			}
+		}
+
+		return true;
+	};
+
+	/**
+	 * Checks that the input parameter string is only composed of alphabetic characters.
+	 */
+	validator.isAlpha = function(input) {
+		var code, i, len;
+
+		if (arguments.length === 0) {
+			throw "Function requires 1 parameter, 0 given";
+		}
+
+		for (i = 0, len = input.length; i < len; i++) {
+			code = input.charCodeAt(i);
+			if(!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122 )) {
 				return false;
 			}
 		}
@@ -531,7 +552,7 @@
 		}
 
 		return false;
-	};	
+	};
 
 	window.validator = validator;
 })(window);
