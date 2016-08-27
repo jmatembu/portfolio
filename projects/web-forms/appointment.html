@@ -29,36 +29,48 @@
 						<div class="appointment-header">
 							<h1>Schedule Appointment</h1>
 						</div>
-						<form class="appointment-form">
-							<div class="col6">
-								<label for="email">Email *</label>
-								<input type="email" name="email" id="email" autofocus>
+						<form class="appointment-form" novalidate>
+							<div class="row">
+								<div class="col6">
+									<label for="email">Email: *</label>
+									<input type="email" name="email" id="email" placeholder="username@domain.com">
+									<span class="error"></span>
+								</div>
+								<div class="col6">
+									<label for="phone_number">Phone Number:</label>
+									<input type="text" name="phone_number" id="phone_number" placeholder="+256 70 2111111">
+									<span class="error"></span>
+								</div>
 							</div>
-							<div class="col6">
-								<label for="phone_number">Phone Number *</label>
-								<input type="text" name="phone_number" id="phone_number">
-							</div>
-							<div class="col12">
-								<label for="message">Message *</label>
-								<textarea name="message" id="message"></textarea>
+							<div class="row">
+								<div class="col12">
+									<label for="message">Message: <small>500 word limit.</small></label>
+									<textarea name="message" id="message" placeholder="Write your message here"></textarea>
+									<span class="error"></span>
+								</div>
 							</div>
 							<div class="row">
 								<div class="col4">
-									<label for="schedule-date">Date *</label>
+									<label for="schedule-date">Date: *</label>
 									<input type="date" name="schedule_date" id="schedule-date">
+									<span class="error"></span>
 								</div>
 								<div class="col4">
-									<label for="schedule-time">Time *</label>
+									<label for="schedule-time">Time: *</label>
 									<input type="time" name="schedule_time" id="schedule-time">
+									<span class="error"></span>
 								</div>
 								<div class="col4">
-									<label for="schedule-timezone">Timezone *</label>
-									<select>
-										<option>GMT -3</option>
-										<option>GMT</option>
-										<option>GMT +3</option>
+									<label for="schedule-timezone">Timezone: *</label>
+									<select name="schedule_timezone" id="schedule_timezone">
+										<option value="">Select</option>
+										<option value="GMT -3">GMT -3</option>
+										<option value="GMT">GMT</option>
+										<option value="GMT +3">GMT +3</option>
 									</select>
+									<span class="error"></span>
 								</div>
+								
 							</div>
 							<div class="col6 right">
 								<button type="submit" class="button button-lg">Complete Schedule</button>
@@ -72,5 +84,7 @@
 	<footer>
 		<span>Copyright &copy; 2016!</span>
 	</footer>
+	<script type="text/javascript" src="js/validator.js"></script>
+	<script type="text/javascript" src="js/appointment.js"></script>
 </body>
 </html>

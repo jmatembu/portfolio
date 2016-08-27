@@ -9,6 +9,9 @@ html {
 	margin: 0;
 	padding: 0;
 }
+label > small {
+	font-size: 0.725rem;
+}
 input[type="date"],
 input[type="datetime"],
 input[type="email"],

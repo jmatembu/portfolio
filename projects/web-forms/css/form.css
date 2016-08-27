@@ -431,9 +431,9 @@
 
 /** APPOINTMENT SCHEDULE FORM */
 .appointment {
-	width: 60%;
+	width: 70%;
 	margin: 0 auto;
-	padding: 2.5em;
+	padding: 2.5rem;
 	border-radius: 5px;
 	border-top: 5px solid #FF7043;
 	color: #616161;
@@ -465,14 +465,14 @@
 .appointment-form select,
 .appointment-form textarea {
 	width: 100%;
-	height: 2.5em;
-	padding: 0.3125em;
-	margin-top: 0.3125em;
-	margin-bottom: 0.9375em;
-	font-size: 1.25em;
+	height: 2.5rem;
 	color: rgba(0,0,0,0.6);
 	border: 1px solid #E0E0E0;
 	border-radius: 3px;
+	padding: 0.3125rem;
+	margin-top: 0.3125rem;
+	margin-bottom: 0.9375rem;
+	font-size: 1.25rem;
 }
 .appointment-form input[type="email"]:focus,
 .appointment-form input[type="text"]:focus,
@@ -483,7 +483,7 @@
 	border: 2px solid #E0E0E0;
 }
 .appointment-form textarea {
-	height: 10em;
+	height: 10rem;
 }
 
 /** Appointment Form */
@@ -604,7 +604,7 @@
 }
 /** Payment Form */
 .error {
-	display: block;
+	display: none;
 	width: 100%;
 	padding: 0;
 	background-color: #FF0000;
@@ -612,15 +612,24 @@
 	font-size: 1rem;
 	transition: 0.3s;
 }
+
 .error.active {
 	padding: 0.625rem;
 	margin-bottom: 0.625rem;
+	display: block;
 }
+/*.active:before {
+	content: "";
+	clear: both;
+	display: block;
+}*/
 .invalid,
 input[type="text"].invalid,
 input[type="date"].invalid,
+input[type="time"].invalid,
 input[type="email"].invalid,
 input[type="password"].invalid,
-input[type="search"].invalid {
+input[type="search"].invalid,
+select.invalid {
 	border: 1px solid #FF0000;
 }
