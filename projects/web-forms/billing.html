@@ -33,28 +33,32 @@
 						<fieldset>
 							<legend>BILLING DETAILS</legend>
 							<div class="col6">
-								<label for="first-name">First Name *</label>
-								<input type="text" name="first_name" id="first-name" autofocus>
+								<label for="billing-first-name">First Name *</label>
+								<input type="text" name="billing_first_name" id="billing-first-name">
 							</div>
 							<div class="col6">
-								<label for="last-name">Last Name *</label>
-								<input type="text" name="last_name" id="last-name">
+								<label for="billing-last-name">Last Name *</label>
+								<input type="text" name="billing_last_name" id="billing-last-name">
 							</div>
 							<div class="col12">
-								<label for="address">Address *</label>
-								<input type="text" name="address" id="address">
+								<label for="billing-address">Address *</label>
+								<input type="text" name="billing_address" id="billing-address">
 							</div>
 							<div class="col6">
-								<label for="country">Country *</label>
-								<input type="text" name="country" id="country">
+								<label for="billing-country">Country *</label>
+								<select name="billing_country" id="billing-country">
+									<option value="">Select Country</option>
+								</select>
 							</div>
 							<div class="col6">
-								<label for="city">City *</label>
-								<input type="text" name="city" id="city">
+								<label for="billing-city">City *</label>
+								<select name="billing_city" id="billing-city">
+									<option value="">Select City</option>
+								</select>
 							</div>
 							<div class="col12">
-								<label for="same-for-billing">
-									<input type="checkbox" value="true" id="same-for-billing" name="same_for_billing"> My billing information is the same for shipping.
+								<label for="billing-is-shipping">
+									<input type="checkbox" value="true" id="billing-is-shipping" name="billing_is_shipping"> My billing information is the same for shipping.
 								</label>
 							</div>
 						</fieldset>
@@ -62,24 +66,24 @@
 						<fieldset>
 							<legend>SHIPPING DETAILS</legend>
 							<div class="col6">
-								<label for="first-name">First Name *</label>
-								<input type="text" name="first_name" id="first-name" autofocus>
+								<label for="shipping-first-name">First Name *</label>
+								<input type="text" name="shipping_first_name" id="shipping-first-name">
 							</div>
 							<div class="col6">
-								<label for="last-name">Last Name *</label>
-								<input type="text" name="last_name" id="last-name">
+								<label for="shipping-last-name">Last Name *</label>
+								<input type="text" name="shipping_last_name" id="shipping-last-name">
 							</div>
 							<div class="col12">
-								<label for="address">Address *</label>
-								<input type="text" name="address" id="address">
+								<label for="shipping-address">Address *</label>
+								<input type="text" name="shipping_address" id="shipping-address">
 							</div>
 							<div class="col6">
-								<label for="country">Country *</label>
-								<input type="text" name="country" id="country">
+								<label for="shipping-country">Country *</label>
+								<input type="text" name="shipping_country" id="shipping-country">
 							</div>
 							<div class="col6">
-								<label for="city">City *</label>
-								<input type="text" name="city" id="city">
+								<label for="shipping-city">City *</label>
+								<input type="text" name="shipping_city" id="shipping-city">
 							</div>
 						</fieldset>
 
@@ -96,5 +100,7 @@
 	<footer>
 		<span>Copyright &copy; 2016!</span>
 	</footer>
+	<script type="text/javascript" src="js/validator.js"></script>
+	<script type="text/javascript" src="js/billing.js"></script>
 </body>
 </html>
