@@ -31,12 +31,14 @@
 					<form class="payment-form">
 						<div class="col12">
 							<label for="name">Name <small>as it appears on card</small></label>
-							<input type="text" name="name" id="name" autofocus>
+							<input type="text" name="name" id="name">
+							<span class="error"></span>
 						</div>
 						<div class="row">
 							<div class="col9">
 								<label for="card-number">Card Number <small>use your Credit / Debit card</small></label>
 								<input type="text" name="card_number" id="card-number">
+								<span class="error"></span>
 							</div>
 							<div class="col3">
 								<label for="card-number">&nbsp; </label>
@@ -78,6 +80,7 @@
 							<div class="col3">
 								<label for="cvv">CVV2/CVC2</label>
 								<input type="text" name="cvv" id="cvv">
+								<span class="error"></span>
 							</div>
 							<div class="col3">
 								<label for="cvv">&nbsp;</label>
@@ -103,5 +106,7 @@
 	<footer>
 		<span>Copyright &copy; 2016!</span>
 	</footer>
+	<script type="text/javascript" src="js/validator.js"></script>
+	<script type="text/javascript" src="js/payment.js"></script>
 </body>
 </html>

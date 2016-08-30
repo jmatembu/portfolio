@@ -8,6 +8,12 @@
 		billingCountry = form.elements.billing_country,
 		billingCity = form.elements.billing_city,
 		billingIsShipping = form.elements.billing_is_shipping,
+		shippingFirstName = form.elements.shipping_first_name,
+		shippingLastName = form.elements.shipping_last_name,
+		shippingAddress = form.elements.shipping_address,
+		shippingCountry = form.elements.shipping_country,
+		shippingCity = form.elements.shipping_city,
+		shippingDetails = document.getElementById('shipping-details'),
 
 		countryData = {
 			countries: [
@@ -42,9 +48,7 @@
 				for (var i = countries.length - 1; i >= 0; i--) {
 
 					if (countries[i].hasOwnProperty('name')) {
-
 						names.push(countries[i].name);
-
 					}
 
 				}
@@ -72,11 +76,17 @@
 
 		},
 
+		setErrors = function(element, message) {
+			element.className = "invalid";
+			element.nextElementSibling.className = "error active";
+			element.nextElementSibling.textContent = message;
+		},
+
 		clearError = function() {
 
 			this.className = "";
-			this.previousElementSibling.className = "error";
-			this.previousElementSibling.textContent = "";
+			this.nextElementSibling.className = "error";
+			this.nextElementSibling.textContent = "";
 
 		},
 
@@ -86,96 +96,148 @@
 
 		validateForm = function() {
 
-			var firstNameInput = firstName.value,
-				lastNameInput = lastName.value,
-				dobInput = dob.value,
-				passwordInput = password.value,
-				emailInput = email.value;
+			var message = "";
 
-			if (validator.isEmpty(firstNameInput)) {
+			if (validator.isEmpty(billingFirstName.value)) {
 
-				firstName.className = "invalid";
-				firstName.previousElementSibling.className = "error active";
-				firstName.previousElementSibling.textContent = "We need to know your first name.";
+				message = "We need to know your first name.";
+				setErrors(billingFirstName, message);
 				
-			} else if (!validator.isOfLength(firstNameInput, 2)) {
+			} else if (!validator.isOfLength(billingFirstName.value, 2)) {
 
-				firstName.className = "invalid";
-				firstName.previousElementSibling.className = "error active";
-				firstName.previousElementSibling.textContent = "Please provide your first name in full e.g Joe";
+				message = "Please provide your first name in full e.g Joe";
+				setErrors(billingFirstName, message);
+
+			} 
+
+			if (validator.isEmpty(billingLastName.value)) {
+
+				message = "We need to know your last name.";
+				setErrors(billingLastName, message);
+
+			} else if (!validator.isOfLength(billingLastName.value, 2)) {
+
+				message = "Please provide your last name in full e.g Carter";
+				setErrors(billingLastName, message);
+
+			}
+
+			if (validator.isEmpty(billingAddress.value)) {
+
+				message = "Please provide your date of birth.";
+				setErrors(billingAddress, message);
+				
+			} else if (!validator.isLength(billingAddress.value, 250)) {
+				
+				message = "Address information exceeds limit.";
+				setErrors(billingAddress, message);
+
+			}
+
+			if (validator.isEmpty(billingCountry.value)) {
+
+				message = "Please select country.";
+				setErrors(billingCountry, message);
+
+			}
+
+			if (!validator.isEmpty(billingCountry.value) && validator.isEmpty(billingCity.value)) {
+
+				message = "Please select city.";
+				setErrors(billingCity, message);
+				
+			}
+
+			if (validator.isEmpty(shippingFirstName.value)) {
+
+				message = "We need to know your first name.";
+				setErrors(shippingFirstName, message);
+				
+			} else if (!validator.isOfLength(billingFirstName.value, 2)) {
+
+				message = "Please provide your first name in full e.g Joe";
+				setErrors(shippingFirstName, message);
 				
 			} 
 
-			if (validator.isEmpty(lastNameInput)) {
+			if (validator.isEmpty(shippingLastName.value)) {
 
-				lastName.className = "invalid";
-				lastName.previousElementSibling.className = "error active";
-				lastName.previousElementSibling.textContent = "We need to know your last name.";
+				message = "We need to know your last name.";
+				setErrors(shippingLastName, message);
 
-			} else if (!validator.isOfLength(lastNameInput, 2)) {
+			} else if (!validator.isOfLength(shippingLastName.value, 2)) {
 
-				lastName.className = "invalid";
-				lastName.previousElementSibling.className = "error active";
-				lastName.previousElementSibling.textContent = "Please provide your last name in full e.g Carter";
+				message = "Please provide your last name in full e.g Carter";
+				setErrors(shippingLastName, message);
 
 			}
 
-			if (validator.isEmpty(dobInput)) {
+			if (validator.isEmpty(shippingAddress.value)) {
 
-				dob.className = "invalid";
-				dob.previousElementSibling.className = "error active";
-				dob.previousElementSibling.textContent = "Please provide your date of birth.";
+				message = "Please provide your date of birth.";
+				setErrors(shippingAddress, message);
 				
-			} else if (!validator.isBeforeToday(dobInput)) {
+			} else if (!validator.isLength(shippingAddress.value, 250)) {
 				
-				dob.className = "invalid";
-				dob.previousElementSibling.className = "error active";
-				dob.previousElementSibling.textContent = "Your date of birth can only be before today. :)";
+				message = "Address information exceeds limit.";
+				setErrors(shippingAddress, message);
 
 			}
 
-			if (validator.isEmpty(emailInput)) {
+			if (validator.isEmpty(shippingCountry.value)) {
 
-				email.className = "invalid";
-				email.previousElementSibling.className = "error active";
-				email.previousElementSibling.textContent = "Please provide your email address, we need it to identify you.";
-				
-			} else if (!validator.isEmailAddress(emailInput)) {
-
-				email.className = "invalid";
-				email.previousElementSibling.className = "error active";
-				email.previousElementSibling.textContent = "The email is of an invalid format. Emails are usually in this format: 'username@domain.com'";
+				message = "Please select country.";
+				setErrors(shippingCountry, message);
 				
 			}
 
-			if (validator.isEmpty(passwordInput)) {
+			if (!validator.isEmpty(shippingCountry.value) && validator.isEmpty(shippingCity.value)) {
 
-				password.className = "invalid";
-				password.previousElementSibling.className = "error active";
-				password.previousElementSibling.textContent = "You need a password to secure your account.";
-
-			} else if (validator.isOfLength(passwordInput, 13)) {
-
-				password.className = "invalid";
-				password.previousElementSibling.className = "error active";
-				password.previousElementSibling.textContent = "The password is too long. Such passwords are difficult to remember.";
+				message = "Please select city.";
+				setErrors(shippingCity, message);
 				
-			} else if (validator.isLength(passwordInput, 5)) {
-
-				password.className = "invalid";
-				password.previousElementSibling.className = "error active";
-				password.previousElementSibling.textContent = "The password is too short. Such passwords are easier to guess.";
-
 			}
 
 		};
 
 	populateSelectElement(billingCountry, countryNames);
+	populateSelectElement(shippingCountry, countryNames);
+
+	billingFirstName.addEventListener('input', function(e) {
+
+		var doClearError = clearError.bind(this);
+
+		if (!validator.isEmpty(billingFirstName.value) || validator.isOfLength(billingFirstName.value, 2)) {
+			doClearError();
+		}
+
+	}, false);
+
+	billingLastName.addEventListener('input', function(e) {
+
+		var doClearError = clearError.bind(this);
+
+		if (!validator.isEmpty(billingLastName.value) || validator.isOfLength(billingLastName.value, 2)) {
+			doClearError();
+		}
+
+	}, false);
+
+	billingAddress.addEventListener('input', function(e) {
+
+		var doClearError = clearError.bind(this);
+
+		if (!validator.isEmpty(billingAddress.value) || validator.isLength(billingAddress.value, 250)) {
+			doClearError();
+		}
+
+	}, false);
 
 	billingCountry.addEventListener('change', function(e) {
 
 		// TODO: Refactor this code, like separate code into a reusable function perhaps?
 		var selected = this.value,
+			doClearError = clearError.bind(this),
 			country;
 
 		country = countryData.getCountryData(selected);
@@ -183,16 +245,104 @@
 		if (billingCity.options.length > 1) {
 
 			for (var i = billingCity.options.length - 1; i >= 1; i--) {
-
 				billingCity.options.remove(i); // Remove an entire city option element
-
 			}
 
 		}
 		// Only if a country was found
 		if (country !== undefined) {
-			// Will populated city element with the provided list of cities
 			populateSelectElement(billingCity, country.cities);	
+		}
+
+		if (!validator.isEmpty(selected)) {
+			doClearError();
+		}
+
+	});
+
+	billingCity.addEventListener('change', function(e) {
+
+		var doClearError = clearError.bind(this);
+
+		if (!validator.isEmpty(this.value)) {
+			doClearError();
+		}
+		
+	});
+
+	shippingFirstName.addEventListener('input', function(e) {
+
+		var doClearError = clearError.bind(this);
+
+		if (!validator.isEmpty(shippingFirstName.value) || validator.isOfLength(shippingFirstName.value, 2)) {
+			doClearError();
+		}
+
+	}, false);
+
+	shippingLastName.addEventListener('input', function(e) {
+
+		var doClearError = clearError.bind(this);
+
+		if (!validator.isEmpty(shippingLastName.value) || validator.isOfLength(shippingLastName.value, 2)) {
+			doClearError();
+		}
+
+	}, false);
+
+	shippingAddress.addEventListener('input', function(e) {
+
+		var doClearError = clearError.bind(this);
+
+		if (!validator.isEmpty(shippingAddress.value) || validator.isLength(shippingAddress.value, 250)) {
+			doClearError();
+		}
+
+	}, false);
+
+	shippingCountry.addEventListener('change', function(e) {
+
+		// TODO: Refactor this code, like separate code into a reusable function perhaps?
+		var selected = this.value,
+			doClearError = clearError.bind(this),
+			country;
+
+		country = countryData.getCountryData(selected);
+
+		if (shippingCity.options.length > 1) {
+
+			for (var i = shippingCity.options.length - 1; i >= 1; i--) {
+				shippingCity.options.remove(i); // Remove an entire city option element
+			}
+
+		}
+		// Only if a country was found
+		if (country !== undefined) {
+			populateSelectElement(shippingCity, country.cities);	
+		}
+
+		if (!validator.isEmpty(selected)) {
+			doClearError();
+		}
+
+	});
+
+	shippingCity.addEventListener('change', function(e) {
+
+		var doClearError = clearError.bind(this);
+
+		if (!validator.isEmpty(this.value)) {
+			doClearError();
+		}
+		
+	});
+
+	billingIsShipping.addEventListener('change', function(e) {
+		
+		if (billingIsShipping.checked) {
+			shippingDetails.setAttribute('class', 'hidden');
+		} else {
+			shippingDetails.removeAttribute('class');
 		}
 
 	});

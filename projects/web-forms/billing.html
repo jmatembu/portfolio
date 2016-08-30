@@ -35,55 +35,69 @@
 							<div class="col6">
 								<label for="billing-first-name">First Name *</label>
 								<input type="text" name="billing_first_name" id="billing-first-name">
+								<span class="error"></span>
 							</div>
 							<div class="col6">
 								<label for="billing-last-name">Last Name *</label>
 								<input type="text" name="billing_last_name" id="billing-last-name">
+								<span class="error"></span>
 							</div>
 							<div class="col12">
 								<label for="billing-address">Address *</label>
-								<input type="text" name="billing_address" id="billing-address">
+								<textarea name="billing_address" id="billing-address"></textarea>
+								<span class="error"></span>
 							</div>
 							<div class="col6">
 								<label for="billing-country">Country *</label>
 								<select name="billing_country" id="billing-country">
 									<option value="">Select Country</option>
 								</select>
+								<span class="error"></span>
 							</div>
 							<div class="col6">
 								<label for="billing-city">City *</label>
 								<select name="billing_city" id="billing-city">
 									<option value="">Select City</option>
 								</select>
+								<span class="error"></span>
 							</div>
 							<div class="col12">
 								<label for="billing-is-shipping">
-									<input type="checkbox" value="true" id="billing-is-shipping" name="billing_is_shipping"> My billing information is the same for shipping.
+									<input type="checkbox" id="billing-is-shipping" name="billing_is_shipping"> My billing information is the same for shipping.
 								</label>
 							</div>
 						</fieldset>
 						
-						<fieldset>
+						<fieldset id="shipping-details">
 							<legend>SHIPPING DETAILS</legend>
 							<div class="col6">
 								<label for="shipping-first-name">First Name *</label>
 								<input type="text" name="shipping_first_name" id="shipping-first-name">
+								<span class="error"></span>
 							</div>
 							<div class="col6">
 								<label for="shipping-last-name">Last Name *</label>
 								<input type="text" name="shipping_last_name" id="shipping-last-name">
+								<span class="error"></span>
 							</div>
 							<div class="col12">
 								<label for="shipping-address">Address *</label>
-								<input type="text" name="shipping_address" id="shipping-address">
+								<textarea name="shipping_address" id="shipping-address"></textarea>
+								<span class="error"></span>
 							</div>
 							<div class="col6">
 								<label for="shipping-country">Country *</label>
-								<input type="text" name="shipping_country" id="shipping-country">
+								<select name="shipping_country" id="shipping-country">
+									<option value="">Select Country</option>
+								</select>
+								<span class="error"></span>
 							</div>
 							<div class="col6">
 								<label for="shipping-city">City *</label>
-								<input type="text" name="shipping_city" id="shipping-city">
+								<select name="shipping_city" id="shipping-city">
+									<option value="">Select City</option>
+								</select>
+								<span class="error"></span>
 							</div>
 						</fieldset>
 

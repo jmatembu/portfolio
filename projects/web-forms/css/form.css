@@ -2,7 +2,7 @@
 .login {
 	width: 35%;
 	margin: 5% auto;
-	padding: 2.5em;
+	padding: 2.5rem;
 	background-color: #FFFFFF;
 	border-radius: 5px;
 	border-top: 5px solid #FF7043;
@@ -15,7 +15,7 @@
 .login span {
 	display: inline-block;
 	float: right;
-	font-size: 0.75em;
+	font-size: 0.75rem;
 }
 .login span a,
 .signup span a {
@@ -27,8 +27,8 @@
 	text-decoration: none;
 }
 .login-header {
-	padding-bottom: 0.75em;
-	margin-bottom: 0.75em;
+	padding-bottom: 0.75rem;
+	margin-bottom: 0.75rem;
 }
 .login-header:after {
 	content: "";
@@ -36,7 +36,7 @@
 	clear: both;
 }
 .login-header span {
-	padding-top: 20px;
+	padding-top: 1.25rem;
 }
 .login-form input,
 .login-form button {
@@ -55,11 +55,11 @@
 .login-form input[type="password"],
 .login-form input[type="text"] {
 	width: 100%;
-	height: 2.5em;
-	padding: 0.3125em;
-	margin-top: 0.3125em;
-	margin-bottom: 0.9375em;
-	font-size: 1.25em;
+	height: 3rem;
+	padding: 0.3125rem;
+	margin-top: 0.3125rem;
+	margin-bottom: 0.9375rem;
+	font-size: 1.25rem;
 	color: rgba(0,0,0,0.6);
 	border: 1px solid #E0E0E0;
 	border-radius: 3px;
@@ -76,7 +76,7 @@
 .signup {
 	width: 40%;
 	margin: 5% auto;
-	padding: 2.5em;
+	padding: 2.5rem;
 	background-color: #FFFFFF;
 	border-radius: 5px;
 	border-top: 5px solid #FF7043;
@@ -124,11 +124,11 @@
 .signup-form input[type="text"],
 .signup-form input[type="date"] {
 	width: 100%;
-	height: 2.5em;
-	padding: 0.3125em;
-	margin-top: 0.3125em;
-	margin-bottom: 0.9375em;
-	font-size: 1.25em;
+	height: 3rem;
+	padding: 0.3125rem;
+	margin-top: 0.3125rem;
+	margin-bottom: 0.9375rem;
+	font-size: 1.25rem;
 	color: rgba(0,0,0,0.6);
 	border: 1px solid #E0E0E0;
 	border-radius: 3px;
@@ -377,11 +377,6 @@
 .billing-form .col12 {
 	padding: 1.5%;
 }
-
-.billing-form span {
-	margin-bottom: 0.25em;
-	font-style: italic;
-}
 .billing-form fieldset {
 	border: 2px dotted #e0e0e0;
 	padding: 4% 3%;
@@ -405,8 +400,14 @@
 .billing-form label {
 	cursor: pointer;
 }
+.billing-form label:before {
+	content: "";
+	clear: both;
+	display: block;
+}
 .billing-form input[type="text"],
-.billing-form select {
+.billing-form select,
+.billing-form textarea {
 	width: 100%;
 	height: 2.5rem;
 	padding: 0.3125rem;
@@ -416,6 +417,9 @@
 	color: rgba(0,0,0,0.6);
 	border: 1px solid #E0E0E0;
 	border-radius: 3px;
+}
+.billing-form textarea {
+	height: 5rem;
 }
 .billing-form input[type="text"]:focus {
 	border: 3px solid #E0E0E0;
@@ -511,7 +515,6 @@
 }
 .payment-form span {
 	margin-bottom: 0.25em;
-	font-style: italic;
 }
 .payment span a {
 	color: #616161;
@@ -578,11 +581,11 @@
 .payment-form select,
 .payment-form textarea {
 	width: 100%;
-	height: 2.5em;
-	padding: 0.3125em;
-	margin-top: 0.3125em;
+	height: 2.5rem;
+	padding: 0.3125rem;
+	margin-top: 0.3125rem;
 	
-	font-size: 1.25em;
+	font-size: 1.25rem;
 	color: rgba(0,0,0,0.6);
 	border: 1px solid #E0E0E0;
 	border-radius: 3px;
@@ -632,6 +635,7 @@ input[type="time"].invalid,
 input[type="email"].invalid,
 input[type="password"].invalid,
 input[type="search"].invalid,
-select.invalid {
+select.invalid,
+textarea.invalid {
 	border: 1px solid #FF0000;
 }

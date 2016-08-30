@@ -284,6 +284,18 @@
 	};
 
 	/**
+	 * Checks if the input parameter's character count is equal to the n parameter.
+	 */
+	validator.equalsLength = function(input, n) {
+
+		if (arguments.length < 2) {
+			throw "Function requires 2 parameters, " + arguments.length + " given";
+		}
+
+		return input.length === n;
+	}
+
+	/**
 	 * Counts the number of words in the input parameter.
 	 */
 	validator.countWords = function(input) {
@@ -403,6 +415,22 @@
 			if(!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122 )) {
 				return false;
 			}
+		}
+
+		return true;
+	};
+
+	/**
+	 * Checks that the input parameter string is only composed of numerals.
+	 */
+	validator.isNumeric = function(input) {
+
+		if (arguments.length === 0) {
+			throw "Function requires 1 parameter, 0 given";
+		}
+
+		if (isNaN(Number(input))) {
+			return false;
 		}
 
 		return true;
