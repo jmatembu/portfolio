@@ -1,6 +1,7 @@
-/** LOGIN FORM */
+/* Login
+ -------------------------------------------------*/
 .login {
-	width: 35%;
+	width: 65%;
 	margin: 5% auto;
 	padding: 2.5rem;
 	background-color: #FFFFFF;
@@ -70,11 +71,14 @@
 	border: 2px solid #E0E0E0;
 }
 
-/** End Login Form */
 
-/** Sign Up Form */
+
+
+
+/* Sign Up Form
+ ----------------------------------------------*/
 .signup {
-	width: 40%;
+	width: 65%;
 	margin: 5% auto;
 	padding: 2.5rem;
 	background-color: #FFFFFF;
@@ -144,7 +148,7 @@
 
 /** Search Form*/
 .search {
-	width: 35%;
+	width: 65%;
 	margin: 0 auto;
 	padding: 2.5em;
 	border: 1px solid #E0E0E0;
@@ -171,7 +175,7 @@
 
 /** Questionnaire */
 .questionnaire {
-	width: 60%;
+	width: 70%;
 	margin: 0 auto;
 }
 .questionnaire:after {
@@ -248,9 +252,14 @@
 	min-width: 10em;
 }
 
-/** Color Builder */
+
+
+
+
+/* Color Builder
+ ------------------------------------------------------*/
 .color-builder {
-	width: 45%;
+	width: 65%;
 	margin: 4% auto;
 	padding: 2.5em;
 	background-color: #FFFFFF;
@@ -435,7 +444,8 @@
 	vertical-align: middle;
 }
 
-/** APPOINTMENT SCHEDULE FORM */
+/* Appointment Scheduling form
+ --------------------------------------------------------*/
 .appointment {
 	width: 70%;
 	margin: 0 auto;
@@ -492,12 +502,15 @@
 	height: 10rem;
 }
 
-/** Appointment Form */
 
-/** Payment SCHEDULE FORM */
+
+
+
+/** Payment form
+ -----------------------------------------------*/
 .payment {
 	position: relative;
-	width: 50%;
+	width: 70%;
 	margin: 0 auto;
 	padding: 4.5em 2.5em 2.5em 2.5em;
 	background-color: #FFFFFF;
@@ -513,6 +526,7 @@
 	float: right;
 	font-size: 0.75em;
 }
+
 .payment-form span {
 	margin-bottom: 0.25em;
 }
@@ -638,4 +652,83 @@ input[type="search"].invalid,
 select.invalid,
 textarea.invalid {
 	border: 1px solid #FF0000;
+}
+@media (max-width: 1024px) {
+  .login,
+  .signup,
+  .search,
+  .color-builder,
+  .payment,
+  .questionnaire {
+    width: 80%;
+  }
+  .appointment {
+    width: 90%;
+  }
+}
+@media (max-width: 360px), (max-width: 600px) {
+  .container {
+    max-width: 100%;
+  }
+
+	.login,
+  .signup,
+  .search,
+  .color-builder,
+  .payment,
+  .questionnaire {
+		width: 100%;
+    padding: 1rem;
+	}
+  .login-header h1,
+  .signup-header h1 {
+    margin-bottom: 0;
+  }
+
+  .appointment-header h1 {
+    font-size: 2rem;
+  }
+
+  .appointment-form .col6,
+  .appointment-form .col4,
+  .payment-form .col3.col3-xs {
+    display: block;
+    width: 100%;
+  }
+  
+  .payment {
+    padding: 4.5rem 1rem 2.5rem;
+  }
+  .payment-form {
+    margin-top: 2.25rem;
+  }
+
+  .payment-form .col3-xs:last-child > label {
+    display: none;
+  }
+
+  .payment-form p {
+    margin-top: 2.25rem;
+  }
+}
+@media (max-width: 360px) {
+  .appointment-header h1 {
+    font-size: 1.875rem;
+  }
+  .login-header span,
+  .signup-header span {
+    padding-top: 1rem;
+  }
+
+  .questionnaire-form input[type="text"] {
+    width: 100%;
+  }
+
+  .questionnaire-form button {
+      width: 100%;
+  }
+
+  .options label {
+    font-size: 1rem;
+  }
 }
