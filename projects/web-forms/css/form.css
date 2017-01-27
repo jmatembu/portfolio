@@ -1,7 +1,7 @@
+
 /* Login
  -------------------------------------------------*/
 .login {
-	width: 65%;
 	margin: 5% auto;
 	padding: 2.5rem;
 	background-color: #FFFFFF;
@@ -174,10 +174,7 @@
 /** End search */
 
 /** Questionnaire */
-.questionnaire {
-	width: 70%;
-	margin: 0 auto;
-}
+
 .questionnaire:after {
 	content: "";
 	display: block;
@@ -234,8 +231,9 @@
 	-moz-transition-duration: 0.3s;
 }
 .questionnaire-form input[type="text"] {
-	width: 40%;
-	height: 2.5em;
+	width: 80%;
+	max-width: 400px;
+	height: 3rem;
 	padding: 0.3125em;
 	margin-top: 0.3125em;
 	margin-bottom: 0.75em;
@@ -259,7 +257,7 @@
 /* Color Builder
  ------------------------------------------------------*/
 .color-builder {
-	width: 65%;
+	min-width: 320px;
 	margin: 4% auto;
 	padding: 2.5em;
 	background-color: #FFFFFF;
@@ -342,7 +340,7 @@
 
 /** Billing Form */
 .billing {
-	width: 60%;
+	min-width: 300px;
 	margin: 0 auto;
 	padding: 2.5em;
 	background-color: #FFFFFF;
@@ -447,7 +445,7 @@
 /* Appointment Scheduling form
  --------------------------------------------------------*/
 .appointment {
-	width: 70%;
+	min-width: 300px;
 	margin: 0 auto;
 	padding: 2.5rem;
 	border-radius: 5px;
@@ -510,7 +508,6 @@
  -----------------------------------------------*/
 .payment {
 	position: relative;
-	width: 70%;
 	margin: 0 auto;
 	padding: 4.5em 2.5em 2.5em 2.5em;
 	background-color: #FFFFFF;
@@ -538,11 +535,15 @@
 	width: 100%;
 	top: 0;
 	left: 0;
-	padding: 2%;
+	padding: .625rem .9375rem 1.25rem;
 	background-color: #FF7043;
 	color: #FFFFFF;
 	text-align: center;
 	box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+}
+.payment-secure > span {
+	font-size: unset;
+	float: unset;
 }
 .payment-header {
 	padding: 1.5%;
@@ -653,23 +654,34 @@ select.invalid,
 textarea.invalid {
 	border: 1px solid #FF0000;
 }
+
+
 @media (max-width: 1024px) {
-  .login,
-  .signup,
-  .search,
-  .color-builder,
-  .payment,
-  .questionnaire {
-    width: 80%;
-  }
-  .appointment {
-    width: 90%;
-  }
+
+	.container {
+		margin: 0 auto;
+		max-width: 75%;
+	}
+
+	.payment-form #cvv,
+	.payment-form select,
+	.billing-form select {
+		font-size: 1rem;
+	}
+
 }
+
+@media (max-width: 705px) {
+	.payment {
+		padding-top: 6rem;
+	}
+}
+
 @media (max-width: 360px), (max-width: 600px) {
-  .container {
-    max-width: 100%;
-  }
+	.container {
+	  max-width: 90%;
+	  padding: 0;
+	}
 
 	.login,
   .signup,
@@ -678,8 +690,23 @@ textarea.invalid {
   .payment,
   .questionnaire {
 		width: 100%;
-    padding: 1rem;
+    padding: 1em;
 	}
+
+	.payment {
+		min-width: 300px;
+		padding: 4.5rem 1rem 2.5rem;
+	}
+	.billing,
+	.appointment {
+		padding: 1rem;
+	}
+
+	.appointment-container {
+		width: 90%;
+		margin: 30px auto;
+	}
+
   .login-header h1,
   .signup-header h1 {
     margin-bottom: 0;
@@ -689,16 +716,15 @@ textarea.invalid {
     font-size: 2rem;
   }
 
+  .billing-form .col6,
   .appointment-form .col6,
   .appointment-form .col4,
+  .payment-form .col9,
   .payment-form .col3.col3-xs {
     display: block;
     width: 100%;
   }
   
-  .payment {
-    padding: 4.5rem 1rem 2.5rem;
-  }
   .payment-form {
     margin-top: 2.25rem;
   }
@@ -707,11 +733,18 @@ textarea.invalid {
     display: none;
   }
 
-  .payment-form p {
-    margin-top: 2.25rem;
+  .payment-form .col12 > p {
+  	margin-bottom: 0;
+  }
+
+  .hidden-xs {
+  	display: none;
   }
 }
+
+
 @media (max-width: 360px) {
+
   .appointment-header h1 {
     font-size: 1.875rem;
   }
@@ -731,4 +764,5 @@ textarea.invalid {
   .options label {
     font-size: 1rem;
   }
+
 }
